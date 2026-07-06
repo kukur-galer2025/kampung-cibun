@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 export async function adminSave(endpoint: string, data: Record<string, unknown>, imageFile: File | null, id?: number): Promise<{ ok: boolean; error?: string }> {
   const token = localStorage.getItem('admin_token');
-  const url = id ? `http://localhost:8000/api/${endpoint}/${id}` : `http://localhost:8000/api/${endpoint}`;
+  const url = id ? `${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/${endpoint}/${id}` : `${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/${endpoint}`;
 
   const formData = new FormData();
   for (const [key, value] of Object.entries(data)) {
@@ -35,7 +35,7 @@ export async function adminSave(endpoint: string, data: Record<string, unknown>,
 export async function adminDelete(endpoint: string, id: number): Promise<void> {
   const token = localStorage.getItem('admin_token');
   try {
-    const res = await fetch(`http://localhost:8000/api/${endpoint}/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/${endpoint}/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
     if (res.ok) {
       toast.success('Data berhasil dihapus!');
     } else {
@@ -48,5 +48,5 @@ export async function adminDelete(endpoint: string, id: number): Promise<void> {
 
 export function imgUrl(path: string | null | undefined): string | null {
   if (!path) return null;
-  return `http://localhost:8000${path}`;
+  return `${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}${path}`;
 }

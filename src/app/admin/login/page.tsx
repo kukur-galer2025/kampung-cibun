@@ -15,7 +15,7 @@ export default function AdminLogin() {
     e.preventDefault();
     setError(''); setLoading(true);
     try {
-      const res = await fetch('http://localhost:8000/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ email, password }) });
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/login`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ email, password }) });
       const data = await res.json();
       if (res.ok && data.token) { localStorage.setItem('admin_token', data.token); router.push('/admin'); }
       else setError(data.message || 'Login gagal.');

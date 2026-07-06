@@ -8,7 +8,7 @@ type Product = { id: number; name: string; description: string; features: string
 
 export default function ProdukLokal() {
   const [products, setProducts] = useState<Product[]>([]);
-  useEffect(() => { fetch('http://localhost:8000/api/products').then(r => r.json()).then(d => setProducts(d)).catch(console.error); }, []);
+  useEffect(() => { fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/products`).then(r => r.json()).then(d => setProducts(d)).catch(console.error); }, []);
 
   const fadeIn: Variants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
 
@@ -40,7 +40,7 @@ export default function ProdukLokal() {
                   {prod.image_url ? (
                     <div className="w-full h-48 relative" style={{ backgroundColor: '#F0F0F0' }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={`http://localhost:8000${prod.image_url}`} alt={prod.name} className="w-full h-full object-cover" />
+                      <img src={`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}${prod.image_url}`} alt={prod.name} className="w-full h-full object-cover" />
                       <div className="absolute top-4 right-4">
                         <span className="font-label text-[10px] font-semibold tracking-[0.2em] uppercase px-3 py-1 bg-white/90 shadow-sm" style={{ color: '#C5A55A' }}>UMKM</span>
                       </div>

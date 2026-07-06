@@ -13,7 +13,7 @@ export default function NewsDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/news/${params.id}`).then(r => r.json()).then(d => setNews(d)).catch(console.error).finally(() => setLoading(false));
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/news/${params.id}`).then(r => r.json()).then(d => setNews(d)).catch(console.error).finally(() => setLoading(false));
   }, [params.id]);
 
   if (loading) return <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#FAF8F5' }}><div className="w-8 h-8 rounded-full animate-spin" style={{ border: '3px solid rgba(0,0,0,0.06)', borderTopColor: '#C5A55A' }}></div></div>;
@@ -24,7 +24,7 @@ export default function NewsDetail() {
       {/* Hero */}
       {news.image_url && (
         <section className="relative h-[40vh] md:h-[50vh] overflow-hidden">
-          <img src={`http://localhost:8000${news.image_url}`} alt={news.title} className="absolute inset-0 w-full h-full object-cover" />
+          <img src={`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}${news.image_url}`} alt={news.title} className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)' }} />
         </section>
       )}

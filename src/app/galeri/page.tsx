@@ -9,7 +9,7 @@ type Gallery = { id: number; title: string; category: string; image_url: string 
 export default function Galeri() {
   const [items, setItems] = useState<Gallery[]>([]);
   const [filter, setFilter] = useState('Semua');
-  useEffect(() => { fetch('http://localhost:8000/api/galleries').then(r => r.json()).then(d => setItems(d)).catch(console.error); }, []);
+  useEffect(() => { fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/galleries`).then(r => r.json()).then(d => setItems(d)).catch(console.error); }, []);
 
   const categories = ['Semua', ...Array.from(new Set(items.map(i => i.category)))];
   const filtered = filter === 'Semua' ? items : items.filter(i => i.category === filter);
@@ -53,7 +53,7 @@ export default function Galeri() {
                   style={{ border: '1px solid rgba(0,0,0,0.06)' }}>
                   
                   {item.image_url ? (
-                    <img src={`http://localhost:8000${item.image_url}`} alt={item.title} className="w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                    <img src={`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}${item.image_url}`} alt={item.title} className="w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                   ) : (
                     <div className="aspect-[4/3] flex items-center justify-center transition-transform duration-700 group-hover:scale-105"
                       style={{ background: item.color || 'linear-gradient(135deg, #1E3A2F, #97BC62)' }}>

@@ -19,7 +19,7 @@ export default function ProgramsAdmin() {
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const pickerRef = useRef<HTMLDivElement>(null);
 
-  const fetchData = async () => { try { setItems(await (await fetch('http://localhost:8000/api/programs')).json()); } catch {} finally { setLoading(false); } };
+  const fetchData = async () => { try { setItems(await (await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/programs`)).json()); } catch {} finally { setLoading(false); } };
   useEffect(() => { fetchData(); }, []);
 
   useEffect(() => {

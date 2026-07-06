@@ -9,11 +9,11 @@ export default function AdminDashboard() {
   useEffect(() => {
     const fetchLen = (url: string) => fetch(url).then(r => r.json()).then(d => Array.isArray(d) ? d.length : 0).catch(() => 0);
     Promise.all([
-      fetchLen('http://localhost:8000/api/programs'),
-      fetchLen('http://localhost:8000/api/events'),
-      fetchLen('http://localhost:8000/api/products'),
-      fetchLen('http://localhost:8000/api/galleries'),
-      fetchLen('http://localhost:8000/api/news'),
+      fetchLen(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/programs`),
+      fetchLen(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/events`),
+      fetchLen(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/products`),
+      fetchLen(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/galleries`),
+      fetchLen(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/news`),
     ]).then(([p, e, pr, g, n]) => setStats({ programs: p, events: e, products: pr, galleries: g, news: n }));
   }, []);
 

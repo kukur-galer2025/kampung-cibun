@@ -9,7 +9,7 @@ type News = { id: number; title: string; category: string; date: string; excerpt
 
 export default function Berita() {
   const [news, setNews] = useState<News[]>([]);
-  useEffect(() => { fetch('http://localhost:8000/api/news').then(r => r.json()).then(d => setNews(d)).catch(console.error); }, []);
+  useEffect(() => { fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/news`).then(r => r.json()).then(d => setNews(d)).catch(console.error); }, []);
 
   const fadeIn: Variants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
 
@@ -34,7 +34,7 @@ export default function Berita() {
                   className="group flex flex-col" style={{ backgroundColor: '#FFFFFF', border: '1px solid rgba(0,0,0,0.06)' }}>
                   <div className="h-56 relative overflow-hidden" style={{ backgroundColor: '#E8E4DE' }}>
                     {n.image_url ? (
-                      <img src={`http://localhost:8000${n.image_url}`} alt={n.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <img src={`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}${n.image_url}`} alt={n.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center"><span className="text-5xl opacity-30">📰</span></div>
                     )}

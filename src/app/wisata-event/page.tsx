@@ -9,7 +9,7 @@ type Event = { id: number; title: string; date: string; focus: string[]; image_u
 
 export default function WisataEvent() {
   const [events, setEvents] = useState<Event[]>([]);
-  useEffect(() => { fetch('http://localhost:8000/api/events').then(r => r.json()).then(d => setEvents(d)).catch(console.error); }, []);
+  useEffect(() => { fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/events`).then(r => r.json()).then(d => setEvents(d)).catch(console.error); }, []);
 
   const fadeIn: Variants = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.6 } } };
 
@@ -44,7 +44,7 @@ export default function WisataEvent() {
                   {ev.image_url ? (
                     <div className="shrink-0 w-32 md:w-48 aspect-square relative" style={{ border: '1px solid rgba(0,0,0,0.06)' }}>
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={`http://localhost:8000${ev.image_url}`} alt={ev.title} className="w-full h-full object-cover" />
+                      <img src={`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}${ev.image_url}`} alt={ev.title} className="w-full h-full object-cover" />
                     </div>
                   ) : (
                     <div className="shrink-0 w-28 text-center p-4" style={{ backgroundColor: '#FFFFFF', border: '1px solid rgba(0,0,0,0.06)' }}>

@@ -11,7 +11,7 @@ export default function ProgramPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/programs').then(r => r.json()).then(d => setPrograms(d)).catch(console.error).finally(() => setLoading(false));
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/programs`).then(r => r.json()).then(d => setPrograms(d)).catch(console.error).finally(() => setLoading(false));
   }, []);
 
   const fadeIn: Variants = {

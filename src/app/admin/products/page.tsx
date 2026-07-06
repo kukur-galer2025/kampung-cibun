@@ -20,7 +20,7 @@ export default function ProductsAdmin() {
   const [error, setError] = useState('');
   const [deleteId, setDeleteId] = useState<number | null>(null);
 
-  const fetchData = async () => { try { setItems(await (await fetch('http://localhost:8000/api/products')).json()); } catch {} finally { setLoading(false); } };
+  const fetchData = async () => { try { setItems(await (await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'https://apikampungcibun.amania.id'}/api/products`)).json()); } catch {} finally { setLoading(false); } };
   useEffect(() => { fetchData(); }, []);
 
   const onFileChange = (f: File | null) => { setImageFile(f); if (f) { const r = new FileReader(); r.onloadend = () => setPreview(r.result as string); r.readAsDataURL(f); } };
