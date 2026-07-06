@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -51,13 +52,16 @@ export default function Navbar() {
       style={useDarkText ? { backgroundColor: '#FFFFFF', boxShadow: '0 1px 0 rgba(0,0,0,0.06)', padding: '16px 0' } : { padding: '24px 0' }}
     >
       <div className="container flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="font-label font-black text-2xl tracking-tight transition-colors duration-700" style={{ color: useDarkText ? '#2D2D2D' : '#FFFFFF' }}>
-            CIBUN
-          </span>
-          <span className="hidden sm:inline-block text-[10px] font-label font-medium tracking-[0.3em] uppercase transition-colors duration-700 border-l pl-2" style={{ color: useDarkText ? 'rgba(45,45,45,0.4)' : 'rgba(255,255,255,0.6)', borderColor: useDarkText ? 'rgba(45,45,45,0.15)' : 'rgba(255,255,255,0.3)' }}>
-            Kampung Cibun
-          </span>
+        <Link href="/" className="flex items-center">
+          <Image 
+            src="/logo-cibun.png" 
+            alt="Logo Kampung Cibun" 
+            width={200} 
+            height={60} 
+            className="w-auto h-8 md:h-10 transition-all duration-700" 
+            style={{ filter: useDarkText ? 'none' : 'brightness(0) invert(1)' }}
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}
