@@ -59,7 +59,6 @@ export default function Navbar() {
             width={200} 
             height={60} 
             className="w-auto h-8 md:h-10 transition-all duration-700" 
-            style={{ filter: useDarkText ? 'none' : 'brightness(0) invert(1)' }}
             priority
           />
         </Link>
