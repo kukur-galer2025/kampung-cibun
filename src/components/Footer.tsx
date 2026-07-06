@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { MapPin, Mail, Phone, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
@@ -30,9 +31,22 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2 lg:col-span-4">
-            <Link href="/" className="inline-block mb-6">
-              <span className="font-label font-black text-3xl tracking-tight text-white block mb-1">CIBUN</span>
-              <p className="font-label text-[10px] font-medium tracking-[0.3em] uppercase" style={{ color: 'rgba(255,255,255,0.35)' }}>Kampung Cibun</p>
+            <Link href="/" className="flex items-center gap-3 mb-6">
+              <Image 
+                src="/logo-cibun.png" 
+                alt="Logo" 
+                width={60} 
+                height={60} 
+                className="w-auto h-12 md:h-14 transition-all duration-700 object-contain" 
+              />
+              <div className="flex flex-col justify-center">
+                <span className="font-label font-bold text-[14px] leading-none tracking-[0.2em] transition-colors duration-700 uppercase text-white">
+                  Kampung
+                </span>
+                <span className="font-label font-black text-[20px] md:text-[22px] leading-none tracking-tight mt-1" style={{ color: '#C5A55A' }}>
+                  CIBUN
+                </span>
+              </div>
             </Link>
             <p className="leading-relaxed mb-10 max-w-sm text-[15px]" style={{ color: 'rgba(255,255,255,0.5)' }}>
               Menikmati Alam, Merawat Budaya, Menghidupkan Desa. Sebuah inisiatif desa wisata berkelanjutan di jantung Banyumas.

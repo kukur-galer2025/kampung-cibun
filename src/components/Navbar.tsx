@@ -52,15 +52,23 @@ export default function Navbar() {
       style={useDarkText ? { backgroundColor: '#FFFFFF', boxShadow: '0 1px 0 rgba(0,0,0,0.06)', padding: '16px 0' } : { padding: '24px 0' }}
     >
       <div className="container flex items-center justify-between">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center gap-3">
           <Image 
             src="/logo-cibun.png" 
-            alt="Logo Kampung Cibun" 
-            width={200} 
+            alt="Logo" 
+            width={60} 
             height={60} 
-            className="w-auto h-8 md:h-10 transition-all duration-700" 
+            className="w-auto h-10 md:h-12 transition-all duration-700 object-contain" 
             priority
           />
+          <div className="flex flex-col justify-center">
+            <span className="font-label font-bold text-[12px] md:text-[14px] leading-none tracking-[0.2em] transition-colors duration-700 uppercase" style={{ color: useDarkText ? '#2D2D2D' : '#FFFFFF' }}>
+              Kampung
+            </span>
+            <span className="font-label font-black text-[16px] md:text-[20px] leading-none tracking-tight mt-1" style={{ color: '#C5A55A' }}>
+              CIBUN
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
