@@ -48,7 +48,7 @@ export default function Berita() {
                     <h3 className="text-xl mb-4 leading-snug line-clamp-2 group-hover:underline" style={{ color: '#2D2D2D' }}>
                       <Link href={`/berita/${n.id}`}>{n.title}</Link>
                     </h3>
-                    <p className="text-sm leading-relaxed mb-6 flex-1 line-clamp-3" style={{ color: '#888' }}>{n.excerpt}</p>
+                    <p className="text-sm leading-relaxed mb-6 flex-1 line-clamp-3" style={{ color: '#888' }} dangerouslySetInnerHTML={{ __html: n.excerpt }}></p>
                     <Link href={`/berita/${n.id}`} className="inline-flex items-center gap-2 text-sm font-label font-semibold tracking-wider uppercase" style={{ color: '#2D2D2D' }}>
                       Baca <ArrowRight size={14} />
                     </Link>
