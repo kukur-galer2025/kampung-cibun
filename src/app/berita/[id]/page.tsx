@@ -46,7 +46,7 @@ export default function NewsDetail() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl mb-8 leading-tight" style={{ color: '#2D2D2D' }}>{news.title}</h1>
 
             {/* Excerpt */}
-            <p className="text-lg leading-relaxed mb-10 pb-10" style={{ color: '#888', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>{news.excerpt}</p>
+            <p className="text-lg leading-relaxed mb-10 pb-10" style={{ color: '#888', borderBottom: '1px solid rgba(0,0,0,0.06)' }} dangerouslySetInnerHTML={{ __html: news.excerpt }}></p>
 
             {/* Rich Content */}
             <div className="prose prose-lg max-w-none" style={{ color: '#444' }}
