@@ -66,10 +66,12 @@ export default function ProdukLokal() {
                       </ul>
                     )}
                     
-                    <button className="w-full inline-flex items-center justify-center font-label font-semibold tracking-wider text-sm uppercase px-6 py-4 transition-all duration-300"
-                      style={{ border: '1px solid #2D2D2D', color: '#2D2D2D' }}>
-                      Pesan Sekarang <ArrowRight size={14} className="ml-2" />
-                    </button>
+                    <a href={`https://wa.me/6282328700576?text=Halo,%20saya%20tertarik%20dengan%20produk%20lokal%20Cibun:%20${encodeURIComponent(prod.name)}`} 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       className="w-full inline-flex items-center justify-center font-label font-semibold tracking-wider text-sm uppercase px-6 py-4 transition-all duration-300 hover:bg-[#2D2D2D] hover:text-[#FAF8F5] border border-[#2D2D2D] text-[#2D2D2D]">
+                      Pesan via WA <ArrowRight size={14} className="ml-2" />
+                    </a>
                   </div>
                 </motion.div>
               ))}
